@@ -1,0 +1,20 @@
+{
+	"name":"Saved",
+	"description":"Link saving simple MVC project",
+	"require":{
+		"torophp/torophp":"dev-master",
+		"twig/twig":"2.0"
+	},
+	"authors":[
+		{
+			"name":"Yash Dev Lamba",
+			"email":"yashdev18@gmail.com"
+		}
+	],
+	"autoload":{
+		"psr-4":{
+			"Saved\\Controllers\\":"app/controllers",
+			"Saved\\Models\\":"app/models"
+		}
+	}
+}
