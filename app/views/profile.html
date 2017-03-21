@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}Welcome to Saved{% endblock %}
+{% block content %}
+		<p class='welcome'>Welcome {{rows.Username}}</p><br>
+		<form action="/addlink" method="post">
+			<table class="add_link">
+				<tr>
+					<td><input type="text" name="link" placeholder="Link"></td>
+				</tr>
+				<tr>
+					<td><textarea rows="3" cols="17" name="desc" placeholder="Description"></textarea></td>
+				</tr>
+				<tr>
+					<td><input type="submit" class="add" value="Add" class="add"></td>
+				</tr>
+			</table>
+		</form>
+{% endblock %}

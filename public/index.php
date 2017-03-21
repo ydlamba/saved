@@ -9,21 +9,12 @@ ToroHook::add('404', function(){
 });
 
 Toro::serve([
-	'/' => Saved\Controllers\HomeController::class
-
-
+	'/' => Saved\Controllers\HomeController::class,
+	'/register' => Saved\Controllers\PostRegisterController::class,
+	'/login' => Saved\Controllers\PostLoginController::class,
+	'/addlink' => Saved\Controllers\PostLinkController::class
 
 
 	]);
-
-
-
-
-
-
-
-
-
-
 
 ?>	

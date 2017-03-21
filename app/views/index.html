@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+		<div class="lmain">
+			<form action="/register" method="post">
+				<table>
+					<tr>	
+						<td><input type="text" name="name" id="name" placeholder="Name"></td>
+					</tr>
+					<tr>
+						<td><input type="email" name="email" id="email" placeholder="Email"></td>
+					</tr>
+					<tr>
+						<td><input type="text" name="uname" id="uname" placeholder="Username"></td>
+					</tr>
+					<tr>
+						<td><input type="password" name="pass" id="pass" placeholder="Password"></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Register" class="btn"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<hr>
+		<div class="rmain">
+			<form action="/login" method="post" id="login">
+				<table>
+					<tr>
+						<td><input type="text" name="log_uname" id="log_uname" placeholder="Username"></td>
+					</tr>
+					<tr>
+						<td><input type="password" name="log_pass" id="log_pass" placeholder="Password"></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Login" class="btn"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+{% endblock %}
