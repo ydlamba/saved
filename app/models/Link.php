@@ -4,7 +4,8 @@ namespace Saved\Models;
 
 class Link{
 	public static function DB(){
-		return new \PDO("mysql:dbname=saved;host=localhost","guest","guest@123");
+		global $CONFIG;
+		return new \PDO("mysql:dbname={$CONFIG['dbname']};host={$CONFIG['dbhost']}",$CONFIG['dbuser'],$CONFIG['dbpass']);
 	}
 
 	public static function add($link){

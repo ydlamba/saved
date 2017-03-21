@@ -1,6 +1,9 @@
 <?php 
 
 //echo "this is public/index.php";
+    
+$CONFIG = json_decode(file_get_contents(__DIR__ . "/../app/conf/config.json"), true);
+
 require_once __DIR__ . "/../vendor/autoload.php";
 
 ToroHook::add('404', function(){
