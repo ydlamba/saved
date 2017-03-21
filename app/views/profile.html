@@ -22,15 +22,31 @@
 					<th>Description</th>
 				</tr>
 				{% for row in rows %}
-				<tr id='{{row.UID}}' class='data'>
+				<tr id='{{row.LID}}' class='data'>
 					<td>{{row.Link}}</td>
 					<td>{{row.Description}}</td>
-					<td><img src='../close.png' class='close' width='25px' height='25px' onclick='sendReq("{{row.UID}}");'></td>
+					<td><img src='../close.png' class='close' width='25px' height='25px' onclick='sendReq("{{row.LID}}");'></td>
 				</tr>
 				{% endfor %}
 			</table>
 		</div>
 
 		<button class="logout"><a href="/logout">Logout</a></button>
+
+		<script type="text/javascript">
+			function sendReq(i){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						var element = document.getElementById(i);
+						element.outerHTML = "";
+						delete element;
+					}
+				};
+				xhttp.open('POST','/delete',true);
+				xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhttp.send('todelete='+i);
+			}
+		</script>
 
 {% endblock %}

@@ -16,6 +16,13 @@ class Link{
 			'Description' => $link[1]]
 			);
 	}
+	public static function delete($LID){
+		$db = self::DB();
+		$query = $db->prepare('DELETE FROM links WHERE LID = :LID');
+		$result = $query->execute(
+			['LID' => $LID]
+			);
+	}
 
 
 }

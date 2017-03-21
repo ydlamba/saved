@@ -3,9 +3,6 @@
 namespace Saved\Controllers;
 session_start();
 
-use Saved\Models\Link;
-use Saved\Models\User;
-
 class PostLogoutController extends BaseController{
 
 
@@ -17,8 +14,6 @@ class PostLogoutController extends BaseController{
 		}
 
 	}
-
-				
 
 }
 
