@@ -1,8 +1,8 @@
-{% extends "layout.html" %}
+{% extends "profile_layout.html" %}
 {% block title %}Welcome to Saved{% endblock %}
 {% block content %}
-		<p class='welcome'>Welcome {{rows.Username}}</p><br>
-		<form action="/addlink" method="post">
+		<p class='welcome'>Welcome {{login.Username}}</p><br>
+		<form action="/profile" method="post">
 			<table class="add_link">
 				<tr>
 					<td><input type="text" name="link" placeholder="Link"></td>
@@ -15,4 +15,22 @@
 				</tr>
 			</table>
 		</form>
+		<div class='fdata'>
+			<table>
+				<tr>
+					<th>Link</th>
+					<th>Description</th>
+				</tr>
+				{% for row in rows %}
+				<tr id='{{row.UID}}' class='data'>
+					<td>{{row.Link}}</td>
+					<td>{{row.Description}}</td>
+					<td><img src='../close.png' class='close' width='25px' height='25px' onclick='sendReq("{{row.UID}}");'></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+
+		<button class="logout"><a href="/logout">Logout</a></button>
+
 {% endblock %}

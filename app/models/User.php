@@ -34,14 +34,28 @@ class User{
 			$rows = $query->fetch(\PDO::FETCH_ASSOC);
 			echo 'User id is'.$rows['UID'];
 			session_start();
-			$_SESSION['login'] = 1;
+			$_SESSION['flag'] = 1;
+			$_SESSION['UID'] = $rows['UID']; 
 			return $rows;
 
 		}else{
 			echo "Invalid Username or Password";
 		}
-		
+
 	}
+
+	public static function show(){
+		$db = self::DB();		
+		$query = $db->prepare('SELECT * FROM links WHERE UID = :UID');
+		$result = $query->execute(
+			['UID' => $_SESSION['UID']]
+			);
+		if(!$result){
+			print_r($query->errorInfo());
+		}else{
+			return $query->fetchAll();		
+		}
+	}	
 
 }
 

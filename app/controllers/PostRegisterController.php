@@ -22,7 +22,7 @@ class PostRegisterController extends BaseController{
 			echo $register_creds[0], $register_creds[1], $register_creds[2], $register_creds[3];
 
 			if(User::register($register_creds)){
-				header("Location: http://saved.sdslabs.dev/");
+				header("Location:/");
 			}else{
 				echo "Error";
 			}		

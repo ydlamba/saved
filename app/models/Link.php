@@ -9,9 +9,10 @@ class Link{
 
 	public static function add($link){
 		$db = self::DB();
-		$query = $db->prepare('INSERT INTO links (Link, Description) VALUES (:Link, :Description)');
+		$query = $db->prepare('INSERT INTO links (UID, Link, Description) VALUES (:UID, :Link, :Description)');
 		return $query->execute(
-			['Link' => $link[0],
+			['UID' => $_SESSION['UID'],
+			'Link' => $link[0],
 			'Description' => $link[1]]
 			);
 	}

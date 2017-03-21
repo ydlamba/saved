@@ -2,6 +2,7 @@
 
 namespace Saved\Controllers;
 
+session_start();
 use Saved\Models\User;
 
 class PostLoginController extends BaseController{
@@ -19,13 +20,17 @@ class PostLoginController extends BaseController{
 			$login_creds = [$log_uname,$log_pass];
 			echo $login_creds[0]. $login_creds[1];
 
-			$rows = User::login($login_creds); 
+			$login = User::login($login_creds); 
+			$rows = User::show();
 			//var_dump($rows);
+			$_SESSION['login'] = $login;
+			$_SESSION['rows'] = $rows;
 
-			if($rows){
+			if($login){
 				//header("Location: http://saved.sdslabs.dev/login");
 				echo "Logged In";
-				$this->render('profile.html',['rows' => $rows]);
+				//$this->render('profile.html',['rows' => $rows, 'login' => $login]);
+				header('Location:http://saved.sdslabs.dev/profile');
 			}
 
 				
