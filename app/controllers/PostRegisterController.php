@@ -18,7 +18,9 @@ class PostRegisterController extends BaseController{
 			$email = test_input($_POST['email']);
 			$uname = test_input($_POST['uname']);
 			$pass = test_input($_POST['pass']);	
-			$register_creds = [$name, $email, $uname, $pass];
+			$phash = password_hash($pass, PASSWORD_DEFAULT);
+
+			$register_creds = [$name, $email, $uname, $phash];
 			echo $register_creds[0], $register_creds[1], $register_creds[2], $register_creds[3];
 
 			if(User::register($register_creds)){

@@ -20,24 +20,20 @@ class User{
 
 	public static function login($login_creds){
 		$db = self::DB();
-		$query = $db->prepare('SELECT * FROM users WHERE Username = :Username AND Password = :Password');
+		$query = $db->prepare('SELECT * FROM users WHERE Username = :Username');
 		$result = $query->execute(
-			['Username' => $login_creds[0],
-			'Password' => $login_creds[1]]
+			['Username' => $login_creds[0]]
 			);
 
-		if(!$result){
-			print_r($query->errorInfo());
-		}
-		
-		if($query->rowCount() == 1){
-			$rows = $query->fetch(\PDO::FETCH_ASSOC);
-			echo 'User id is'.$rows['UID'];
-			session_start();
-			$_SESSION['flag'] = 1;
-			$_SESSION['UID'] = $rows['UID']; 
-			return $rows;
+		$temp = $query->fetch(\PDO::FETCH_ASSOC);
 
+		if(password_verify($login_creds[1], $temp['Password'])){
+			if($query->rowCount() == 1){
+				session_start();
+				$_SESSION['flag'] = 1;
+				$_SESSION['UID'] = $temp['UID']; 
+				return $temp;
+			}
 		}else{
 			echo "Invalid Username or Password";
 		}
