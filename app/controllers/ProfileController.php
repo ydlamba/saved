@@ -10,10 +10,14 @@ class ProfileController extends BaseController{
 
 	public function get(){
 		if(isset($_SESSION['flag'])){
+
+			$rows = User::show();
+			$users = User::showusers();
+			
 			if($_SESSION['login']['Username'] == 'admin'){
-				$this->render('admin.html',['rows' => $_SESSION['rows'], 'login' => $_SESSION['login'], 'users' => $_SESSION['users']]);
+				$this->render('admin.html',['rows' => $rows, 'login' => $_SESSION['login'], 'users' => $users]);
 			}else{
-				$this->render('profile.html',['rows' => $_SESSION['rows'], 'login' => $_SESSION['login']]);
+				$this->render('profile.html',['rows' => $rows, 'login' => $_SESSION['login']]);
 			}
 		}else{
 			header("location:/");

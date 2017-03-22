@@ -27,13 +27,6 @@ class DeleteController extends BaseController{
 
 	public function post(){
 
-
-			/*if(isset($_POST['deleteLink'])){
-				Link::delete($_POST['deleteLink']);	
-			}else if(isset($_POST['deleteUser'])){
-				User::delete($_POST['deleteUser']);
-			}*/
-
 			Link::delete($_POST['deleteLink']);	
 			User::delete($_POST['deleteUser']);
 
