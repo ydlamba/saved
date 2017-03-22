@@ -80,3 +80,8 @@ table,th,td{
 .add,.close{
 	cursor: pointer;
 }
+
+.link{
+	color: #333;
+	text-decoration: none;
+}

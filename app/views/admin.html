@@ -45,7 +45,7 @@
 				</tr>
 				{% for row in rows %}
 				<tr id='{{row.LID}}' class='data'>
-					<td>{{row.Link}}</td>
+					<td><a href="//{{row.Link}}" class="link" target="_blank">{{row.Link}}</a></td>
 					<td>{{row.Description}}</td>
 					<td><img src='../close.png' class='close' width='25px' height='25px' onclick='deleteLink("{{row.LID}}");'></td>
 				</tr>
