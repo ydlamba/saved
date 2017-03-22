@@ -12,7 +12,7 @@ class ProfileController extends BaseController{
 		if(isset($_SESSION['flag'])){
 			$this->render('profile.html',['rows' => $_SESSION['rows'], 'login' => $_SESSION['login']]);
 		}else{
-			echo 'First Login !';
+			header("location:/");
 		}
 	}
 	public function post(){

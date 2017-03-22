@@ -7,7 +7,7 @@ $CONFIG = json_decode(file_get_contents(__DIR__ . "/../app/conf/config.json"), t
 require_once __DIR__ . "/../vendor/autoload.php";
 
 ToroHook::add('404', function(){
-	echo '404';
+	echo '404 - Not Found';
 	http_response_code(404); //set response code to 404
 });
 

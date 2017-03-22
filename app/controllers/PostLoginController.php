@@ -7,6 +7,9 @@ use Saved\Models\User;
 
 class PostLoginController extends BaseController{
 
+	public function get(){
+		header("location:/");
+	}
 	public function post(){
 		function test_input($data){
 			$data = stripslashes($data);

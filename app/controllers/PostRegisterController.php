@@ -5,7 +5,9 @@ namespace Saved\Controllers;
 use Saved\Models\User;
 
 class PostRegisterController extends BaseController{
-
+	public function get(){
+		header("location:/");
+	}
 	public function post(){
 		function test_input($data){
 			$data = stripslashes($data);
@@ -21,7 +23,7 @@ class PostRegisterController extends BaseController{
 			$phash = password_hash($pass, PASSWORD_DEFAULT);
 
 			$register_creds = [$name, $email, $uname, $phash];
-			echo $register_creds[0], $register_creds[1], $register_creds[2], $register_creds[3];
+			//echo $register_creds[0], $register_creds[1], $register_creds[2], $register_creds[3];
 
 			if(User::register($register_creds)){
 				header("Location:/");

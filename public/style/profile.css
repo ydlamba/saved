@@ -5,6 +5,7 @@
 
 .welcome{
 	color: green;
+	background: #eee;
 	padding: 20px;
 	font-family: 'Ubuntu';
 	font-size: 16px;
@@ -16,6 +17,7 @@
 	color: #333;
 	font-family:'Ubuntu';
 	font-size: 16px;
+	cursor: pointer;
 }
 .logout{
 	margin: 10px 10px 0 0;
@@ -49,20 +51,23 @@ table{
 }
 table,th,td{
 	padding: 10px;
-	border: 1px #eee solid;
+	
 }
 .add_link{
 	
 }
 .fdata{
-	border: 2px solid #eee;
 	padding: 20px;
+	background: #eee;
+}
+.fdata table,.fdata th,.fdata td{
+	border: 1px #ccc solid;
 }
 .add{
 	width: 8vw;
 	padding: 10px;
 	background: transparent;
-	border: 2px #eee solid;
+	border: 2px #ddd solid;
 	font-size: 16px;
 	font-family: 'Ubuntu';
 	display: block;
