@@ -16,6 +16,7 @@ Toro::serve([
 	'/register' => Saved\Controllers\PostRegisterController::class,
 	'/login' => Saved\Controllers\PostLoginController::class,
 	'/profile' => Saved\Controllers\ProfileController::class,
+	'/admin' => Saved\Controllers\AdminController::class,
 	'/delete' => Saved\Controllers\DeleteController::class,
 	'/logout' => Saved\Controllers\PostLogoutController::class
 

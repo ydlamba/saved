@@ -28,6 +28,7 @@ class User{
 
 		$temp = $query->fetch(\PDO::FETCH_ASSOC);
 
+
 		if(password_verify($login_creds[1], $temp['Password'])){
 			if($query->rowCount() == 1){
 				session_start();
@@ -52,7 +53,26 @@ class User{
 		}else{
 			return $query->fetchAll();		
 		}
-	}	
+	}
+
+	public static function showusers(){
+		$db = self::DB();		
+		$query = $db->prepare('SELECT * FROM users');
+		$result = $query->execute();
+		if(!$result){
+			print_r($query->errorInfo());
+		}else{
+			return $query->fetchAll();		
+		}
+	}
+
+	public static function delete($UID){
+		$db = self::DB();
+		$query = $db->prepare('DELETE FROM users WHERE UID = :UID');
+		$result = $query->execute(
+			['UID' => $UID]
+			);
+	}		
 
 }
 

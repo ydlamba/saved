@@ -6,17 +6,18 @@ session_start();
 use Saved\Models\Link;
 use Saved\Models\User;
 
-class ProfileController extends BaseController{
+class AdminController extends BaseController{
 
 	public function get(){
-		if(isset($_SESSION['flag'])){
-			if($_SESSION['login']['Username'] == 'admin'){
-				$this->render('admin.html',['rows' => $_SESSION['rows'], 'login' => $_SESSION['login'], 'users' => $_SESSION['users']]);
-			}else{
-				$this->render('profile.html',['rows' => $_SESSION['rows'], 'login' => $_SESSION['login']]);
-			}
+		if(isset($_SESSION['flag']) && $_SESSION['login']['Username'] == 'admin'){
+
+			$rows = User::show();
+			$users = User::showusers();
+
+			$this->render('admin.html',['rows' => $rows, 'login' => $_SESSION['login'], 'users' => $users]);
+
 		}else{
-			header("location:/");
+			header("location:/profile");
 		}
 	}
 	public function post(){
@@ -34,8 +35,9 @@ class ProfileController extends BaseController{
 			Link::add($link);
 
 			$rows = User::show();
+			$users = User::showusers();
 
-			$this->render('profile.html',['rows' => $rows, 'login' => $_SESSION['login']]);
+			$this->render('admin.html',['rows' => $rows, 'login' => $_SESSION['login'], 'users' => $users]);
 
 	}
 

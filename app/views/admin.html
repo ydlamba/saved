@@ -1,8 +1,29 @@
 {% extends "profile_layout.html" %}
 {% block title %}Welcome to Saved{% endblock %}
 {% block content %}
-		<p class='welcome'>hi {{login.Username}}</p><br>
-		<form action="/profile" method="post">
+
+		<p class='welcome' style="color: red">Admin Panel</p><br>
+		<div class='fdata'>
+			<table>
+				<tr>
+					<th>UID</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Username</th>
+				</tr>
+				{% for user in users %}
+				<tr id='{{user.UID}}' class='data'>
+					<td>{{user.UID}}</td>
+					<td>{{user.Name}}</td>
+					<td>{{user.Email}}</td>
+					<td>{{user.Username}}</td>
+					<td><img src='../close.png' class='close' width='25px' height='25px' onclick='deleteUser("{{user.UID}}");'></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+
+		<form action="/admin" method="post">
 			<table class="add_link">
 				<tr>
 					<td><input type="text" name="link" placeholder="Link"></td>
@@ -15,6 +36,7 @@
 				</tr>
 			</table>
 		</form>
+
 		<div class='fdata'>
 			<table>
 				<tr>
@@ -47,6 +69,19 @@
 				xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				xhttp.send('deleteLink='+i+'&deleteUser=""');
 			}
+			function deleteUser(i){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						var element = document.getElementById(i);
+						element.outerHTML = "";
+						delete element;
+					}
+				};
+				xhttp.open('POST','/delete',true);
+				xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhttp.send('deleteUser='+i+'&deleteLink=""');
+			}	
 		</script>
 
 {% endblock %}

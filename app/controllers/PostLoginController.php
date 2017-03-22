@@ -24,12 +24,19 @@ class PostLoginController extends BaseController{
 
 			$login = User::login($login_creds); 
 			$rows = User::show();
+			$users = User::showusers();
 
 			$_SESSION['login'] = $login;
 			$_SESSION['rows'] = $rows;
+			$_SESSION['users'] = $users;
+
 
 			if($login){
-				header('Location:http://saved.sdslabs.dev/profile');
+				if($login['Username'] == 'admin'){
+					header('Location:http://saved.sdslabs.dev/admin');	
+				}else{
+					header('Location:http://saved.sdslabs.dev/profile');
+				}
 			}
 
 				
